@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 # Setup up HAproxy load balancer
-
-# Uninstall previous HAproxy
-sudo service haproxy stop
-sudo apt-get purge -y haproxy
-
 # Install HAproxy.
 sudo apt update
 sudo apt install -y haproxy
