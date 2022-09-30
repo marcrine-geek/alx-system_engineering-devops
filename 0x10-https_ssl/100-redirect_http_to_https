@@ -15,9 +15,9 @@ frontend myholberton-tech-frontend
 	bind *:443 ssl crt /etc/haproxy/certs/myholberton.tech.pem
 	http-request redirect scheme https code 301 unless { ssl_fc }
 	http-request set-header X-Forwarded-Proto https
-	default_backend th3gr00t-tech-backend
+	default_backend myholberton-tech-backend
 
-backend th3gr00t-tech-backend
+backend myholberton-tech-backend
 	balance roundrobin
 	server 12123-web-01 44.200.30.52:80 check
 	server 12123-web-02 3.235.172.223:80 check
