@@ -1,24 +1,33 @@
-
 global
-        log /dev/log    local0
-	stats socket /run/haproxy/admin.sock mode 660 level admin
+	log /dev/log	local0
+	log /dev/log	local1 notice
+	chroot /var/lib/haproxy
+	stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+	stats timeout 30s
+	user haproxy
+	group haproxy
+	daemon
+
+	# Default SSL material locations
+	ca-base /etc/ssl/certs
+	crt-base /etc/ssl/private
 
 defaults
-        log     global
-        mode    http
-        option  httplog
-	timeout connect  10s
-	timeout client  30s
-	timeout server  30s
+	log	global
+	mode	http
+	option	httplog
+	option	dontlognull
+        timeout connect 5000
+        timeout client  50000
+        timeout server  50000
 
-frontend myholberton-tech-frontend
+
+frontend http_front
 	bind *:80
-	bind *:443 ssl crt /etc/haproxy/certs/myholberton.tech.pem
-	http-request redirect scheme https unless { ssl_fc }
-	http-request set-header X-Forwarded-Proto https
-	default_backend myholberton-tech-backend
+	stats uri /haproxy?stats
+	default_backend http_back
 
-backend myholberton-tech-backend
+backend http_back
 	balance roundrobin
-	server 12123-web-01 44.200.30.52:80 check
-	server 12123-web-02 3.235.172.223:80 check
+	server 20738-web-01 44.200.30.52:80 check
+	server 20738-web-02 3.235.172.223:80 check
