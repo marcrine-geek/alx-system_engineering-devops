@@ -1,5 +1,5 @@
 TASK 1
-Write a blog post explaining what happens when you type https://www.google.com in your browser and press Enter.
+A blog post explaining what happens when you type https://www.google.com in your browser and press Enter.
 
 Requirements, your post must cover:
 
