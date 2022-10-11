@@ -45,7 +45,7 @@ frontend http_front
 
 backend http_back
 	balance roundrobin
-	server 20738-web-01 44.200.30.52:80 check
+	server 20738-web-01 3.227.219.226:80 check
 	server 20738-web-02 3.235.172.223:80 check
 
 # LetEncrypt server
