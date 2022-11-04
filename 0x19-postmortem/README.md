@@ -5,7 +5,7 @@
 Curl command (curl 0:80) kept giving a connection refused error (curl: (7) Failed to connect to 0 port 80: Connection refused).
 The expected output was a nginx welcome page.
 
-### Debugging Process
+### Debugging Process :star: :start:
 > The debugger (Marcrine) encountered the connection refused error at 17:20 EAT upon testing the connection to nginx server, so she proceeded to 
 solving the error using the below steps:
 - Checked the nginx configurations.
