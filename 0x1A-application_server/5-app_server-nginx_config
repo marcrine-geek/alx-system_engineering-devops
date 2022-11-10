@@ -1,4 +1,4 @@
-# Configures Nginx to serve from AirBnB_clone_v3.
+# Configures Nginx to serve from AirBnB_clone_v4.
 
 server {
     # Listen on port 80
@@ -24,6 +24,16 @@ server {
     # Serve API on AirBnB_clone_v3
     location /api {
         proxy_pass http://127.0.0.1:5002/api;
+    }
+
+    # Configure /2-hbnb route of AirBnB_clone_v4 as root location
+    location / {
+        proxy_pass http://127.0.0.1:5003/2-hbnb;
+    }
+
+    # Serve static content for AirBnB_clone_v4
+    location /static {
+        proxy_pass http://127.0.0.1:5003;
     }
 
     # 404 error page
